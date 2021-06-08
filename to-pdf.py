@@ -65,7 +65,7 @@ def api():
 
 # Added this for loader.io verification
 # it expects a url endpoint similar to 'loader.io-f408b6...'
-@app.route(f"/{LOADER_IO_TOKEN}", methods=['GET'])
+@app.route(f"/{LOADER_IO_TOKEN}/", methods=['GET'])
 def loader_io_verification():
     return LOADER_IO_TOKEN
 
