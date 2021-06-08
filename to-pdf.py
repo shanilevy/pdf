@@ -12,7 +12,7 @@ ALLOWED_EXTENSIONS = set(['doc', 'docx', 'xls', 'xlsx'])
 
 app = Flask(__name__)
 
-LOADER_IO_TOKEN = os.environ.get('LOADER_IO_TOKEN', "who knows")
+LOADER_IO_TOKEN = os.environ.get('LOADER_IO_TOKEN', "whoknows")
 
 # Convert using Libre Office
 def convert_file(output_dir, input_file):
@@ -65,11 +65,12 @@ def api():
 
 # Added this for loader.io verification
 # it expects a url endpoint similar to 'loader.io-f408b6...'
-@app.route('LOADER_IO_TOKEN', methods=['GET'])
+@app.route(f"/{LOADER_IO_TOKEN}", methods=['GET'])
 def loader_io_verification():
     return LOADER_IO_TOKEN
 
 
 if __name__ == "__main__":
+    print("running...")
     http_server = WSGIServer(('', int(os.environ.get('PORT', 8080))), app)
     http_server.serve_forever()
